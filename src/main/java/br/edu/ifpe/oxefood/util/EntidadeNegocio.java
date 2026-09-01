@@ -9,8 +9,8 @@ import lombok.Setter;
 @EqualsAndHashCode(of = { "id" })
 public abstract class EntidadeNegocio {
 
-    private Long id;
+private Long id;
 
-    private Boolean habilitado;
+private Boolean habilitado;
     
 }
