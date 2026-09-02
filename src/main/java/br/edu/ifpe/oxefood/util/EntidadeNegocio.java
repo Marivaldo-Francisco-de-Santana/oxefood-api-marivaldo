@@ -7,10 +7,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(of = { "id" })
+@MappedSuperclass
 public abstract class EntidadeNegocio {
 
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
-private Boolean habilitado;
+    @JsonIgnore
+    @Column
+    private Boolean habilitado;
     
 }
+
