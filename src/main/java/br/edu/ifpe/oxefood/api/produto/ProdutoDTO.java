@@ -1,7 +1,5 @@
 package br.edu.ifpe.oxefood.api.produto;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,16 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProdutoDTO {
 
-    private Long id;
-
     private String nome;
 
-    private LocalDate dataNascimento;
+    private String descricao;
 
-    private String cpf;
-
-    private String foneCelular;
-
-    private String foneFixo;
+    private Double preco;
  
 }
