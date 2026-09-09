@@ -1,5 +1,7 @@
 package br.edu.ifpe.oxefood.api.cliente;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -28,9 +30,19 @@ public class ClienteService {
     @Transactional
     public Cliente cadastrar(ClienteDTO dto) {
 
+        
         Cliente cliente = build(dto);
         cliente.setHabilitado(true);
         return repository.save(cliente);
     }
-}
+    public List<Cliente> listar() {
 
+        return repository.findAll();
+    }
+
+    public Cliente buscarPorId(Long id) {
+
+        return repository.findById(id).get();
+
+}   
+}
