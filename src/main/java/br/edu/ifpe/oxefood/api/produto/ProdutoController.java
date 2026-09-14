@@ -1,7 +1,10 @@
 package br.edu.ifpe.oxefood.api.produto;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +28,13 @@ public class ProdutoController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(produtoCadastrado);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Produto>> listar() {
+
+        List<Produto> produtos = produtoService.listar();
+
+        return ResponseEntity.ok(produtos);
     }
 }

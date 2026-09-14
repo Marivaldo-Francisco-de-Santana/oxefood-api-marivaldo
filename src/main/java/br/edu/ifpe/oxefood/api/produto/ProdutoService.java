@@ -1,5 +1,7 @@
 package br.edu.ifpe.oxefood.api.produto;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -33,5 +35,8 @@ public class ProdutoService {
 
         return repository.save(produto);
     }
-}
 
+    public List<Produto> listar() {
+        return repository.findAll();
+    }
+}

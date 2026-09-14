@@ -1,5 +1,7 @@
 package br.edu.ifpe.oxefood.api.empresa;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -35,5 +37,10 @@ public class EmpresaService {
         empresa.setHabilitado(true);
 
         return repository.save(empresa);
+    }
+
+    public List<Empresa> listar() {
+
+        return repository.findAll();
     }
 }
