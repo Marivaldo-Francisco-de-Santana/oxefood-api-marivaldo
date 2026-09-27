@@ -21,9 +21,11 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> cadastrar(@RequestBody ProdutoDTO dto) {
+    public ResponseEntity<Produto> cadastrar(
+            @RequestBody ProdutoDTO dto) {
 
-        Produto produtoCadastrado = produtoService.cadastrar(dto);
+        Produto produtoCadastrado =
+                produtoService.cadastrar(dto);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -33,7 +35,8 @@ public class ProdutoController {
     @GetMapping
     public ResponseEntity<List<Produto>> listar() {
 
-        List<Produto> produtos = produtoService.listar();
+        List<Produto> produtos =
+                produtoService.listar();
 
         return ResponseEntity.ok(produtos);
     }
