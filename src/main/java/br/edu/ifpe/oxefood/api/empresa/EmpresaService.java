@@ -43,4 +43,14 @@ public class EmpresaService {
 
         return repository.findAll();
     }
+
+    @Transactional
+    public void remover(Long id) {
+
+        Empresa empresa = repository.findById(id).get();
+
+        empresa.setHabilitado(false);
+
+        repository.save(empresa);
+    }
 }
