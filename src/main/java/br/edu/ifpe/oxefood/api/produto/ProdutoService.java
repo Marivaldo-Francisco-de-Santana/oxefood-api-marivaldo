@@ -17,7 +17,19 @@ public class ProdutoService {
 
     public Produto build(ProdutoDTO dto) {
 
-        Produto produto = new Produto();
+        Produto produto = null;
+
+        if (dto.getId() == null) {
+
+            // Cadastro
+            produto = new Produto();
+
+        } else {
+
+            // Alteração
+            produto =
+                    repository.findById(dto.getId()).get();
+        }
 
         produto.setNome(dto.getNome());
         produto.setDescricao(dto.getDescricao());
@@ -41,10 +53,24 @@ public class ProdutoService {
         return repository.findAll();
     }
 
+    public Produto buscarPorId(Long id) {
+
+        return repository.findById(id).get();
+    }
+
+    @Transactional
+    public Produto atualizar(ProdutoDTO dto) {
+
+        Produto produto = build(dto);
+
+        return repository.save(produto);
+    }
+
     @Transactional
     public void remover(Long id) {
 
-        Produto produto = repository.findById(id).get();
+        Produto produto =
+                repository.findById(id).get();
 
         produto.setHabilitado(false);
 
