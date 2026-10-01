@@ -22,5 +22,5 @@ public class ClienteDTO {
     private String foneCelular;
 
     private String foneFixo;
- 
 }
+

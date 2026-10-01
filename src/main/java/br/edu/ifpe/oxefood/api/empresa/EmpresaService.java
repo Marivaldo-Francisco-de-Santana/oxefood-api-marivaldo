@@ -17,7 +17,17 @@ public class EmpresaService {
 
     public Empresa build(EmpresaDTO dto) {
 
-        Empresa empresa = new Empresa();
+        Empresa empresa = null;
+
+        if (dto.getId() == null) {
+
+            empresa = new Empresa();
+
+        } else {
+
+            empresa =
+                    repository.findById(dto.getId()).get();
+        }
 
         empresa.setRazaoSocial(dto.getRazaoSocial());
         empresa.setNomeFantasia(dto.getNomeFantasia());
@@ -44,13 +54,28 @@ public class EmpresaService {
         return repository.findAll();
     }
 
+    public Empresa buscarPorId(Long id) {
+
+        return repository.findById(id).get();
+    }
+
+    @Transactional
+    public Empresa atualizar(EmpresaDTO dto) {
+
+        Empresa empresa = build(dto);
+
+        return repository.save(empresa);
+    }
+
     @Transactional
     public void remover(Long id) {
 
-        Empresa empresa = repository.findById(id).get();
+        Empresa empresa =
+                repository.findById(id).get();
 
         empresa.setHabilitado(false);
 
         repository.save(empresa);
     }
 }
+

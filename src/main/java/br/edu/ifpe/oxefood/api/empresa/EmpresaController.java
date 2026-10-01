@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,8 @@ public class EmpresaController {
     public ResponseEntity<Empresa> cadastrar(
             @RequestBody EmpresaDTO dto) {
 
-        Empresa empresaCadastrada = empresaService.cadastrar(dto);
+        Empresa empresaCadastrada =
+                empresaService.cadastrar(dto);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -36,16 +38,37 @@ public class EmpresaController {
     @GetMapping
     public ResponseEntity<List<Empresa>> listar() {
 
-        List<Empresa> empresas = empresaService.listar();
+        return ResponseEntity.ok(
+                empresaService.listar()
+        );
+    }
 
-        return ResponseEntity.ok(empresas);
+    @GetMapping("/{id}")
+    public ResponseEntity<Empresa> buscarPorId(
+            @PathVariable Long id) {
+
+        return ResponseEntity.ok(
+                empresaService.buscarPorId(id)
+        );
+    }
+
+    @PutMapping
+    public ResponseEntity<Empresa> atualizar(
+            @RequestBody EmpresaDTO dto) {
+
+        Empresa empresaAtualizada =
+                empresaService.atualizar(dto);
+
+        return ResponseEntity.ok(empresaAtualizada);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Long id) {
+    public ResponseEntity<Void> remover(
+            @PathVariable Long id) {
 
         empresaService.remover(id);
 
         return ResponseEntity.noContent().build();
     }
 }
+
