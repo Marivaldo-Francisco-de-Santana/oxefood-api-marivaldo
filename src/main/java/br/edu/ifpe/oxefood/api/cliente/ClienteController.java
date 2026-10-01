@@ -34,11 +34,15 @@ public class ClienteController {
                 .status(HttpStatus.CREATED)
                 .body(clienteCadastrado);
     }
-    @PutMapping
-    public ResponseEntity<Cliente> atualizar(@RequestBody ClienteDTO dto) {
 
-	    Cliente clienteAtualizado = clienteService.atualizar(dto);
-	    return ResponseEntity.ok(clienteAtualizado);
+    @PutMapping
+    public ResponseEntity<Cliente> atualizar(
+            @RequestBody ClienteDTO dto) {
+
+        Cliente clienteAtualizado =
+                clienteService.atualizar(dto);
+
+        return ResponseEntity.ok(clienteAtualizado);
     }
 
     @GetMapping
@@ -58,16 +62,6 @@ public class ClienteController {
         );
     }
 
-    @PutMapping
-    public ResponseEntity<Cliente> atualizar(
-            @RequestBody ClienteDTO dto) {
-
-        Cliente clienteAtualizado =
-                clienteService.atualizar(dto);
-
-        return ResponseEntity.ok(clienteAtualizado);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(
             @PathVariable Long id) {
@@ -77,4 +71,8 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
     }
 }
+
+
+
+
 

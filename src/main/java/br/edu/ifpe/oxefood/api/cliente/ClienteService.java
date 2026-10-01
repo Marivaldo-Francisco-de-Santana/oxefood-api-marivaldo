@@ -16,19 +16,7 @@ public class ClienteService {
     }
 
     public Cliente build(ClienteDTO dto) {
-        Cliente cliente = null;
 
-      if (dto.getId() == null) { //Montado para o cadastro
-
-         cliente = new Cliente();
-
-      } else { //Consultado para a alteração
-
-         cliente = repository.findById(dto.getId()).get();
-      }
-
-<<<<<<< HEAD
-=======
         Cliente cliente = null;
 
         if (dto.getId() == null) {
@@ -40,7 +28,6 @@ public class ClienteService {
             cliente = repository.findById(dto.getId()).get();
         }
 
->>>>>>> 7901ef22f9af03de73d7bd5ffadefc504c8b2c08
         cliente.setNome(dto.getNome());
         cliente.setDataNascimento(dto.getDataNascimento());
         cliente.setCpf(dto.getCpf());
@@ -70,18 +57,6 @@ public class ClienteService {
         return repository.findById(id).get();
     }
 
-<<<<<<< HEAD
-} 
-   @Transactional
-   public Cliente atualizar(ClienteDTO dto) {
-
-   Cliente cliente = build(dto);
-   return repository.save(cliente);
-}
-
-  @Transactional
-   public void remover(Long id) {
-=======
     @Transactional
     public Cliente atualizar(ClienteDTO dto) {
 
@@ -93,13 +68,14 @@ public class ClienteService {
     @Transactional
     public void remover(Long id) {
 
-        Cliente cliente =
-                repository.findById(id).get();
->>>>>>> 7901ef22f9af03de73d7bd5ffadefc504c8b2c08
+        Cliente cliente = repository.findById(id).get();
 
         cliente.setHabilitado(false);
 
         repository.save(cliente);
     }
 }
+
+
+
 
