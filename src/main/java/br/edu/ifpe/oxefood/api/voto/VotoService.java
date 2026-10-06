@@ -11,7 +11,7 @@ public class VotoService {
 
     private final votoRepository repository;
 
-    public votoService(votoRepository repository) {
+    public VotoService(votoRepository repository) {
         this.repository = repository;
     }
 
