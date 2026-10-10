@@ -1,4 +1,3 @@
-
 package br.edu.ifpe.oxefood.api.voto;
 
 import java.util.List;
@@ -16,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/voto")
-public class votoController {
+public class VotoController {
 
     private final VotoService votoService;
 
-    public votoController(VotoService service) {
+    public VotoController(VotoService service) {
         this.votoService = service;
     }
 
     @PostMapping
-    public ResponseEntity<voto> cadastrar(
-            @RequestBody votoDTO dto) {
+    public ResponseEntity<Voto> cadastrar(
+            @RequestBody VotoDTO dto) {
 
-        voto votoCadastrado =
+        Voto votoCadastrado =
                 votoService.cadastrar(dto);
 
         return ResponseEntity
@@ -37,17 +36,17 @@ public class votoController {
     }
 
     @PutMapping
-    public ResponseEntity<voto> atualizar(
-            @RequestBody votoDTO dto) {
+    public ResponseEntity<Voto> atualizar(
+            @RequestBody VotoDTO dto) {
 
-        voto votoAtualizado =
+        Voto votoAtualizado =
                 votoService.atualizar(dto);
 
         return ResponseEntity.ok(votoAtualizado);
     }
 
     @GetMapping
-    public ResponseEntity<List<voto>> listar() {
+    public ResponseEntity<List<Voto>> listar() {
 
         return ResponseEntity.ok(
                 votoService.listar()
@@ -55,7 +54,7 @@ public class votoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<voto> buscarPorId(
+    public ResponseEntity<Voto> buscarPorId(
             @PathVariable Long id) {
 
         return ResponseEntity.ok(

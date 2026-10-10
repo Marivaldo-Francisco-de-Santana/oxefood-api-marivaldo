@@ -1,4 +1,3 @@
-
 package br.edu.ifpe.oxefood.api.voto;
 
 import java.time.LocalDate;
@@ -21,7 +20,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class voto extends EntidadeAuditavel  {
+public class Voto extends EntidadeAuditavel  {
   
     @Column
     private String nomeEleitor;
