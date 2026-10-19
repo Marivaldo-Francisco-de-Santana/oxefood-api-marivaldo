@@ -1,11 +1,5 @@
 
 package br.edu.ifpe.oxefood.api.categoriaproduto;
-
-import java.time.LocalDate;
-
-
-
-
 import org.hibernate.annotations.SQLRestriction;
 
 import br.edu.ifpe.oxefood.util.EntidadeAuditavel;
