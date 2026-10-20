@@ -24,55 +24,40 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> cadastrar(
-            @RequestBody ClienteDTO dto) {
+    public ResponseEntity<Cliente> cadastrar(@RequestBody ClienteDTO dto) {
 
-        Cliente clienteCadastrado =
-                clienteService.cadastrar(dto);
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(clienteCadastrado);
+        Cliente clienteCadastrado = clienteService.cadastrar(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteCadastrado);
     }
 
     @PutMapping
-    public ResponseEntity<Cliente> atualizar(
-            @RequestBody ClienteDTO dto) {
+    public ResponseEntity<Cliente> atualizar(@RequestBody ClienteDTO dto) {
 
-        Cliente clienteAtualizado =
-                clienteService.atualizar(dto);
-
-        return ResponseEntity.ok(clienteAtualizado);
+	    Cliente clienteAtualizado = clienteService.atualizar(dto);
+	    return ResponseEntity.ok(clienteAtualizado);
     }
+
 
     @GetMapping
     public ResponseEntity<List<Cliente>> listar() {
 
-        return ResponseEntity.ok(
-                clienteService.listar()
-        );
+        return ResponseEntity.ok(clienteService.listar());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> buscarPorId(
-            @PathVariable Long id) {
+    public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id) {
 
-        return ResponseEntity.ok(
-                clienteService.buscarPorId(id)
-        );
+        return ResponseEntity.ok(clienteService.buscarPorId(id));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(
-            @PathVariable Long id) {
+       @DeleteMapping("/{id}")
+   public ResponseEntity<Void> remover(@PathVariable Long id) {
 
         clienteService.remover(id);
-
         return ResponseEntity.noContent().build();
-    }
+   }
+
+
+
 }
-
-
-
-
 

@@ -12,22 +12,24 @@ public class ClienteService {
     private final ClienteRepository repository;
 
     public ClienteService(ClienteRepository repository) {
-        this.repository = repository;
+       this.repository = repository;
     }
 
     public Cliente build(ClienteDTO dto) {
 
         Cliente cliente = null;
 
-        if (dto.getId() == null) {
-            // Montado para o cadastro
-            cliente = new Cliente();
+      if (dto.getId() == null) { //Montado para o cadastro
 
-        } else {
-            // Consultado para a alteração
-            cliente = repository.findById(dto.getId()).get();
-        }
+         cliente = new Cliente();
 
+      } else { //Consultado para a alteração
+
+         cliente = repository.findById(dto.getId()).get();
+      }
+
+
+        //Cliente cliente = new Cliente();
         cliente.setNome(dto.getNome());
         cliente.setDataNascimento(dto.getDataNascimento());
         cliente.setCpf(dto.getCpf());
@@ -41,13 +43,19 @@ public class ClienteService {
     public Cliente cadastrar(ClienteDTO dto) {
 
         Cliente cliente = build(dto);
-
         cliente.setHabilitado(true);
-
-        return repository.save(cliente);
+        return repository.save(cliente); //insert
     }
 
-    public List<Cliente> listar() {
+    @Transactional
+public Cliente atualizar(ClienteDTO dto) {
+
+Cliente cliente = build(dto);
+return repository.save(cliente);//update
+}
+
+
+     public List<Cliente> listar() {
 
         return repository.findAll();
     }
@@ -57,25 +65,15 @@ public class ClienteService {
         return repository.findById(id).get();
     }
 
-    @Transactional
-    public Cliente atualizar(ClienteDTO dto) {
-
-        Cliente cliente = build(dto);
-
-        return repository.save(cliente);
-    }
-
-    @Transactional
-    public void remover(Long id) {
+      @Transactional
+   public void remover(Long id) {
 
         Cliente cliente = repository.findById(id).get();
-
         cliente.setHabilitado(false);
 
         repository.save(cliente);
-    }
+   }
+
+
 }
-
-
-
 
