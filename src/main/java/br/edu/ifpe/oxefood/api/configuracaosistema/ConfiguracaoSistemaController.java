@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/configuracaosistema")
 public class ConfiguracaoSistemaController {
 
-    private final configuracaosistemaService configuracaosistemaService;
+    private final ConfiguracaoSistemaService configuracaosistemaService;
 
     public ConfiguracaoSistemaController(ConfiguracaoSistemaService service) {
         this.configuracaosistemaService = service;

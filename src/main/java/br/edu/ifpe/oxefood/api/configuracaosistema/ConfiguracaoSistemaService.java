@@ -29,12 +29,13 @@ public class ConfiguracaoSistemaService {
                     repository.findById(dto.getId()).get();
         }
 
-        configuracaosistema.setRazaoSocial(dto.getRazaoSocial());
-        configuracaosistema.setNomeFantasia(dto.getNomeFantasia());
+        configuracaosistema.setNomeEmpresa(dto.getNomeEmpresa());
         configuracaosistema.setCnpj(dto.getCnpj());
-        configuracaosistema.setEmail(dto.getEmail());
-        configuracaosistema.setTelefone(dto.getTelefone());
-        configuracaosistema.setEndereco(dto.getEndereco());
+        configuracaosistema.setSite(dto.getSite());
+        configuracaosistema.setEmailContato(dto.getEmailContato());
+        configuracaosistema.setTempoMinimoAgendamentoPedidos(dto.getTempoMinimoAgendamentoPedidos());
+        configuracaosistema.setLigarAceitePedidos(dto.getLigarAceitePedidos());
+        configuracaosistema.setDataEntradaSistema(dto.getDataEntradaSistema());
 
         return configuracaosistema;
     }
