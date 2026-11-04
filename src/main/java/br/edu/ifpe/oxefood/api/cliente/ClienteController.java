@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/cliente")
 public class ClienteController {
@@ -25,7 +27,7 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<Cliente> cadastrar(
-            @RequestBody ClienteDTO dto) {
+            @RequestBody @Valid ClienteDTO dto) {
 
         Cliente clienteCadastrado =
                 clienteService.cadastrar(dto);
@@ -37,7 +39,7 @@ public class ClienteController {
 
     @PutMapping
     public ResponseEntity<Cliente> atualizar(
-            @RequestBody ClienteDTO dto) {
+            @RequestBody @Valid ClienteDTO dto) {
 
         Cliente clienteAtualizado =
                 clienteService.atualizar(dto);
